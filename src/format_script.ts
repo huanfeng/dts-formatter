@@ -1,36 +1,42 @@
-import { ChildProcess, spawn } from 'child-process-promise';
+import { spawn } from 'child_process';
 import { join } from 'path';
 import { window } from 'vscode';
 
 export class DtsFormatterPy {
-    private formatter: ChildProcess;
-    data: string;
-    err: string;
+	data: string;
+	err: string;
 
-    format(text: string, tab_char: string, tab_size: number): Promise<string> {
-        const scriptPath = join(__dirname, "dts_formatter.py");
+	format(text: string, tab_char: string, tab_size: number): Promise<string> {
+		return new Promise((resolve, reject) => {
+			const scriptPath = join(__dirname, "dts_formatter.py");
+			const formatter = spawn(scriptPath, [tab_char, tab_size.toString()]);
 
-        // Initialize data and err
-        this.data = '';
-        this.err = '';
+			this.data = '';
+			this.err = '';
 
-        // Spawn the Python process
-        const promise = spawn(scriptPath, [tab_char, tab_size.toString()]);
+			formatter.stdout.on('data', (chunk) => {
+				this.data += chunk.toString();
+			});
 
+			formatter.stderr.on('data', (chunk) => {
+				this.err += chunk.toString();
+			});
 
-        // Setup the python process
-        this.formatter = promise.childProcess;
-        this.formatter.stdout.on('data', (data) => this.data = data.toString());
-        this.formatter.stderr.on('data', (data) => this.err = data.toString());
+			formatter.on('error', (error) => {
+				reject(error);
+			});
 
-        // Send the text for formatting
-        this.formatter.stdin.write(text);
-        this.formatter.stdin.end();
+			formatter.on('close', (code) => {
+				if (code === 0) {
+					resolve(this.data);
+				} else {
+					reject(new Error(this.err || `Formatter exited with code ${code}`));
+				}
+			});
 
-        // Return a promise that resolves with the formatted data
-        return promise;
-    }
-
-
+			// Send the text for formatting
+			formatter.stdin.write(text);
+			formatter.stdin.end();
+		});
+	}
 }
-

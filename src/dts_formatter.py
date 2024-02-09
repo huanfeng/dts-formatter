@@ -6,6 +6,7 @@
 import re
 import sys
 
+
 class DtsFormatter:
     def __init__(self, tab_char="tab", tab_size=1):
         if tab_char == "tab":
@@ -46,15 +47,20 @@ class DtsFormatter:
             sys.stderr.write('File %s: error: brace mismatch: %d.\n' % (path, tab))
         return '\n'.join(output), error
 
+
 def main():
     error = False
     tab_char = "tab"
     tab_size = 1
 
     # Parse command line arguments
-    if len(sys.argv) > 1:
-        tab_char = sys.argv[1] if len(sys.argv) > 2 else "tab"
-        tab_size = int(sys.argv[2]) if len(sys.argv) > 3 else 1
+    argc = len(sys.argv)
+    argv = sys.argv
+    if argc > 1:
+        tab_char = argv[1]
+
+    if argc > 2:
+        tab_size = int(argv[2])
 
     formatter = DtsFormatter(tab_char, tab_size)
 
@@ -71,6 +77,7 @@ def main():
         sys.exit(1)
     else:
         sys.exit(0)
+
 
 if __name__ == '__main__':
     main()
