@@ -2,12 +2,12 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import { languages, commands, ExtensionContext, window } from 'vscode';
-import { DtsFormatter } from './dts_formatter';
+import { DtsFormatterProvider } from './DtsFormatterProvider';
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: ExtensionContext) {
 	console.log("ACTIVATE");
-	let provider = languages.registerDocumentFormattingEditProvider('dts', new DtsFormatter());
+	let provider = languages.registerDocumentFormattingEditProvider('dts', new DtsFormatterProvider());
 	let command = commands.registerCommand('dts-formatter.format', () => {
 		const editor = window.activeTextEditor;
 		if (editor) {

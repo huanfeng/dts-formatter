@@ -11,11 +11,6 @@ gulp.task('typescript', function (done) {
         .on('end', done); // Signal async completion
 });
 
-gulp.task('copy-python', function (done) {
-    gulp.src('src/dts_formatter.py')
-        .pipe(gulp.dest(outDir + '/src'))
-        .on('end', done); // Signal async completion
-});
 
-gulp.task('default', gulp.series('typescript', 'copy-python'));
+gulp.task('default', gulp.series('typescript'));
 
