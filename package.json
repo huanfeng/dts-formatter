@@ -2,7 +2,7 @@
 	"name": "dts-formatter",
 	"displayName": "DTS formatter",
 	"description": "Format dts files",
-	"version": "0.0.4",
+	"version": "0.0.5",
 	"publisher": "legale",
 	"repository": {
 		"type": "git",
@@ -36,13 +36,13 @@
 	"contributes": {
 		"documentFormattingEditProviders": [
 			{
-				"language": "dts",
+				"language": "devicetree",
 				"editProvider": "./out/src/extension"
 			}
 		],
 		"languages": [
 			{
-				"id": "dts",
+				"id": "devicetree",
 				"extensions": [
 					".dts",
 					".dtsi"
@@ -73,7 +73,6 @@
 		]
 	},
 	"activationEvents": [
-		"onLanguage:dts",
 		"onStartupFinished"
 	],
 	"main": "./out/src/extension",

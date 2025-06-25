@@ -7,7 +7,7 @@ import { DtsFormatterProvider } from './DtsFormatterProvider';
 // your extension is activated the very first time the command is executed
 export function activate(context: ExtensionContext) {
 	console.log("ACTIVATE");
-	let provider = languages.registerDocumentFormattingEditProvider('dts', new DtsFormatterProvider());
+	let provider = languages.registerDocumentFormattingEditProvider('devicetree', new DtsFormatterProvider());
 	let command = commands.registerCommand('dts-formatter.format', () => {
 		const editor = window.activeTextEditor;
 		if (editor) {

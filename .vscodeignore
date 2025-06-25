@@ -8,3 +8,9 @@ src/**
 tsconfig.json
 vsc-extension-quickstart.md
 node_modules/**
+.DS_Store
+.vscodeignore
+gulpfile.js
+package-lock.json
+*.log
+*.vsix
