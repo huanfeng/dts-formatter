@@ -1,98 +1,98 @@
 {
-	"name": "dts-formatter",
-	"displayName": "DTS formatter",
-	"description": "Format dts files",
-	"version": "0.0.5",
-	"publisher": "legale",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/legale/dts_formatter"
-	},
-	"galleryBanner": {
-		"color": "#ff6e07",
-		"theme": "dark"
-	},
-	"author": {
-		"email": "legale.legale@gmail.com",
-		"name": "Isaev Ruslan",
-		"url": "https://github.com/legale"
-	},
-	"keywords": [
-		"DeviceTree",
-		"device tree",
-		"dts",
-		"formatter",
-		"beautifier"
-	],
-	"license": "BSD-2-CLAUSE",
-	"homepage": "https://github.com/legale/dts_formatter",
-	"icon": "images/dts-formatter.webp",
-	"engines": {
-		"vscode": "^1.12.0"
-	},
-	"categories": [
-		"Formatters"
-	],
-	"contributes": {
-		"documentFormattingEditProviders": [
-			{
-				"language": "devicetree",
-				"editProvider": "./out/src/extension"
-			}
-		],
-		"languages": [
-			{
-				"id": "devicetree",
-				"extensions": [
-					".dts",
-					".dtsi"
-				]
-			}
-		],
-		"configuration": {
-			"title": "dts formatter configuration",
-			"properties": {
-				"dts_formatter.tab_size": {
-					"type": "integer",
-					"minimum": 1,
-					"default": 1,
-					"description": "number of char per indent"
-				},
-				"dts_formatter.tab_char": {
-					"type": "string",
-					"default": "tab",
-					"description": "indent char space or tab"
-				}
-			}
-		},
-		"commands": [
-			{
-				"command": "dts-formatter.format",
-				"title": "Format DTS"
-			}
-		]
-	},
-	"activationEvents": [
-		"onStartupFinished"
-	],
-	"main": "./out/src/extension",
-	"scripts": {
-		"vscode:prepublish": "tsc -p ./",
-		"compile": "tsc -watch -p ./",
-		"postinstall": "node ./node_modules/vscode/bin/install"
-	},
-	"devDependencies": {
-		"@types/mocha": "^2.2.32",
-		"@types/node": "^6.14.13",
-		"mocha": "^2.3.3",
-		"typescript": "^5.3.3",
-		"vscode": "^1.1.37"
-	},
-	"dependencies": {
-		"child-process-promise": "^2.2.1",
-		"gulp": "^4.0.2",
-		"gulp-cli": "^2.3.0",
-		"gulp-typescript": "^3.1.7",
-		"vsce": "^2.15.0"
-	}
+  "name": "devicetree-formatter",
+  "displayName": "DeviceTree/DTS formatter",
+  "description": "Format dts files",
+  "version": "0.0.5",
+  "publisher": "huanfeng",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/huanfeng/dts-formatter"
+  },
+  "galleryBanner": {
+    "color": "#ff6e07",
+    "theme": "dark"
+  },
+  "author": {
+    "email": "huanfengf@gmail.com",
+    "name": "huanfeng",
+    "url": "https://github.com/huanfeng"
+  },
+  "keywords": [
+    "DeviceTree",
+    "device tree",
+    "dts",
+    "formatter",
+    "beautifier"
+  ],
+  "license": "BSD-2-CLAUSE",
+  "homepage": "https://github.com/huanfeng/dts-formatter",
+  "icon": "images/dts-formatter.webp",
+  "engines": {
+    "vscode": "^1.12.0"
+  },
+  "categories": [
+    "Formatters"
+  ],
+  "contributes": {
+    "documentFormattingEditProviders": [
+      {
+        "language": "devicetree",
+        "editProvider": "./out/src/extension"
+      }
+    ],
+    "languages": [
+      {
+        "id": "devicetree",
+        "extensions": [
+          ".dts",
+          ".dtsi"
+        ]
+      }
+    ],
+    "configuration": {
+      "title": "dts formatter configuration",
+      "properties": {
+        "dts_formatter.tab_size": {
+          "type": "integer",
+          "minimum": 1,
+          "default": 1,
+          "description": "number of char per indent"
+        },
+        "dts_formatter.tab_char": {
+          "type": "string",
+          "default": "tab",
+          "description": "indent char space or tab"
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "dts-formatter.format",
+        "title": "Format DTS"
+      }
+    ]
+  },
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/src/extension",
+  "scripts": {
+    "vscode:prepublish": "tsc -p ./",
+    "compile": "tsc -watch -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install"
+  },
+  "devDependencies": {
+    "@types/mocha": "^2.2.32",
+    "@types/node": "^6.14.13",
+    "mocha": "^2.3.3",
+    "typescript": "^5.3.3",
+    "vscode": "^1.1.37"
+  },
+  "dependencies": {
+    "child-process-promise": "^2.2.1",
+    "gulp": "^4.0.2",
+    "gulp-cli": "^2.3.0",
+    "gulp-typescript": "^3.1.7",
+    "vsce": "^2.15.0"
+  }
 }
